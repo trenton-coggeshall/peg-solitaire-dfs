@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://lfpw3aptwbsb"]
+
+[ext_resource type="Script" path="res://peg_location.gd" id="1_thhcb"]
+[ext_resource type="Texture2D" uid="uid://cofgyuwhxmuhj" path="res://Sprites/Peg.png" id="2_hu8p7"]
+[ext_resource type="Script" path="res://Clickable.gd" id="3_uofrn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ut55"]
+radius = 15.1327
+
+[node name="Peg_Location" type="Node2D"]
+script = ExtResource("1_thhcb")
+
+[node name="PegHole" type="Sprite2D" parent="."]
+z_index = 5
+texture = ExtResource("2_hu8p7")
+
+[node name="Clickable" type="Area2D" parent="."]
+script = ExtResource("3_uofrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickable"]
+shape = SubResource("CircleShape2D_2ut55")

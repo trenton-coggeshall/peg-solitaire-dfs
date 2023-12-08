@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5kgwwwauvr51"]
+
+[ext_resource type="PackedScene" uid="uid://cvl3faaq4c02c" path="res://board.tscn" id="1_l7s5l"]
+[ext_resource type="Script" path="res://Solver.gd" id="2_yg0a5"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Board" parent="." instance=ExtResource("1_l7s5l")]
+position = Vector2(566, 296)
+
+[node name="Solver" type="Node" parent="."]
+script = ExtResource("2_yg0a5")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 143.0
+offset_bottom = 49.0
+text = "Solve it for me"
+
+[node name="SpeedSlider" type="HSlider" parent="."]
+offset_left = 27.0
+offset_top = 68.0
+offset_right = 147.0
+offset_bottom = 84.0
+value = 50.0
+
+[node name="Label" type="Label" parent="SpeedSlider"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 18.0
+offset_right = 117.0
+offset_bottom = 44.0
+text = "Solution Speed"
+
+[node name="SearchSpeedSlider" type="HSlider" parent="."]
+offset_left = 27.0
+offset_top = 122.0
+offset_right = 147.0
+offset_bottom = 138.0
+value = 100.0
+
+[node name="Label" type="Label" parent="SearchSpeedSlider"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 18.0
+offset_right = 117.0
+offset_bottom = 44.0
+text = "Search Speed"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 182.0
+offset_right = 150.0
+offset_bottom = 213.0
+text = "Reset Board"
+
+[node name="MovesLabel" type="Label" parent="."]
+offset_left = 885.0
+offset_top = 31.0
+offset_right = 1020.0
+offset_bottom = 57.0
+text = "Moves Searched: "
+
+[node name="RowsLabel" type="Label" parent="."]
+offset_left = 538.0
+offset_top = 18.0
+offset_right = 597.0
+offset_bottom = 44.0
+text = "Rows: 5"
+
+[node name="MinusRowButton" type="Button" parent="."]
+offset_left = 512.0
+offset_top = 15.0
+offset_right = 526.0
+offset_bottom = 46.0
+text = "-"
+
+[node name="PlusRowButton" type="Button" parent="."]
+offset_left = 606.0
+offset_top = 15.0
+offset_right = 620.0
+offset_bottom = 46.0
+text = "+"
+
+[connection signal="pressed" from="Button" to="Solver" method="_on_button_pressed"]
+[connection signal="value_changed" from="SpeedSlider" to="Solver" method="_on_speed_slider_value_changed"]
+[connection signal="value_changed" from="SearchSpeedSlider" to="Solver" method="_on_search_speed_slider_value_changed"]
+[connection signal="pressed" from="Button2" to="Board" method="_on_button_2_pressed"]
+[connection signal="pressed" from="MinusRowButton" to="Board" method="_on_minus_row_button_pressed"]
+[connection signal="pressed" from="PlusRowButton" to="Board" method="_on_plus_row_button_pressed"]
